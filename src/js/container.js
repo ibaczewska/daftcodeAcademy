@@ -1,4 +1,4 @@
-import header from './header';
+import { header } from './header';
 function container() {
   const { body } = document;
   const div = document.createElement('div');
