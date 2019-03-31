@@ -1,4 +1,6 @@
-import './main.scss';
-import script from './js/script';
+import container from './js/container';
+import header from './js/header';
+import './scss/main.scss';
 
-script();
+container();
+header();
