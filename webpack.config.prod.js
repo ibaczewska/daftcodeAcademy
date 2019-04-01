@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const distDir = path.resolve(__dirname, 'dist');
 
 module.exports = {
@@ -23,10 +23,22 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        test: /\.s(a|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: 'css-loader', options: { sourceMap: false } },
+          { loader: 'postcss-loader', options: { sourceMap: false } },
+          { loader: 'sass-loader', options: { sourceMap: false } }
+        ]
       }
     ]
   },
-  plugins: [new HtmlWebpackPlugin()]
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output; optional
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
+    new HtmlWebpackPlugin()
+  ]
 };
