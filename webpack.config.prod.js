@@ -9,11 +9,7 @@ module.exports = {
     filename: 'main.js',
     path: distDir
   },
-  mode: 'development',
-  devtool: 'eval',
-  devServer: {
-    contentBase: distDir
-  },
+  mode: 'production',
   module: {
     rules: [
       {
